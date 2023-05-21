@@ -1,9 +1,10 @@
 import React from "react"
 import Header from "./components/header/header"
 import Main from "./components/main/main"
-
 import { createGlobalStyle } from "styled-components";
-
+import NavComponent from "./components/navbar/navbar";
+import CarouselComponent from "./components/carousel/carousel";
+import Filmes from "./components/filmes/filmes"
 
 export const GlobalStyle = createGlobalStyle`
   *{
@@ -19,6 +20,9 @@ export default function App (){
     <>
       <Header />
       <Main/>
+      <NavComponent/>
+      <CarouselComponent/>
+    <Filmes/>
     </>
   )
 }

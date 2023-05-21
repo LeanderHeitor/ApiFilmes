@@ -1,22 +1,24 @@
-import React from "react";
+import React, { useEffect, useState } from "react"
 import styled from "styled-components";
 import logo from "../../assets/Grupo 569@2x.png";
+import Lupa from "../filmes/image.png"
 import { GlobalStyle } from "../../App";
-import { IoIosSearch } from "react-icons";
 
 export const HeaderStyle = styled.header`
-  border: solid black;
-
-  background-color: rgba(0, 0, 0, 0.7);
+position:fixed;
+  background-color: rgba(0, 0, 0, 0.5);
   backdrop-filter: blur(30px);
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 100%;
+  width: 99.7%;
   height: 10vh;
 
+  input{
+    
+  }
+
   nav {
-    border: solid purple;
     width: 99%;
   }
 
@@ -25,6 +27,7 @@ export const HeaderStyle = styled.header`
     justify-content: space-between;
     align-items: center;
     list-style: none;
+    width:100%
   }
 
   a {
@@ -33,21 +36,53 @@ export const HeaderStyle = styled.header`
     font-size: 1.2rem;
   }
   li {
+ 
     color: white;
-  }
-  div{
-    display:flex;
-    border:solid blue;
     width:15%;
-    justify-content:space-between;
-  }
+    input{
 
-`
+    }
+  }
+  div {
+    display: flex;
+    width:20%;
+    justify-content: space-evenly;
+  }
+`;
 export const LogoImg = styled.img`
-border:solid red;
+`;
+
+export const FiltroSection = styled.section`
+display:flex;
+justify-content:space-evenly;
+align-items:center;
+width:35%;
+
+img{
+  width:2vw;
+  cursor:pointer;
+}
 `
+export const SearchInput = styled.input`
+  display: ${(props) => props.show};
+  height:2vh;
+  width:7vw;
+    align-items:center;
+`;
 
 export default function Header() {
+  const [filtro, setFiltro] = useState('');
+  const [mostrarInput, setMostrarInput]= useState(false);
+  
+
+  const handleInputChange = (event) => {
+    setFiltro(event.target.value);
+  };
+
+  const handleLupaClick = () => {
+    setMostrarInput(!mostrarInput);
+  };
+
   return (
     <HeaderStyle>
       <nav>
@@ -65,9 +100,22 @@ export default function Header() {
             </li>
           </div>
 
-          <div>
+          <FiltroSection>
             <li>
-              <h3>procurar</h3>
+              
+              <img 
+              src={Lupa} 
+              alt="filtro"
+              onClick={()=>setMostrarInput(!mostrarInput)}
+            />
+            </li>
+            <li>
+              <SearchInput
+              show={mostrarInput===false?'none':'initial'}
+              placeholder="Procure seu filme aqui"
+              value={filtro}
+              onChange={handleInputChange}
+              />
             </li>
             <li>
               <h3>Filtro</h3>
@@ -75,7 +123,7 @@ export default function Header() {
             <li>
               <h3>Login</h3>
             </li>
-          </div>
+          </FiltroSection>
         </ul>
       </nav>
     </HeaderStyle>
