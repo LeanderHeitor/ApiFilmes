@@ -30,8 +30,8 @@ const MainTitle = styled.h2`
   font-size: 20px;
   color: white;
   width: 77%;
-  margin-top:20px;
-  margin-bottom:20px;
+  margin-top: 20px;
+  margin-bottom: 20px;
 `;
 const CarouselTitle = styled.h2`
   font-size: 16px;
@@ -41,7 +41,7 @@ const CarouselSubTitle = styled.h3`
   font-size: 12px;
   color: white;
 `;
-export default function CarouselComponent() {
+export default function SeriesCarouselComponent() {
   const [filmes, setFilmes] = useState([]);
 
   useEffect(() => {
@@ -51,7 +51,7 @@ export default function CarouselComponent() {
   const getFilmes = async () => {
     await axios
       .get(
-        "https://api.themoviedb.org/3/movie/upcoming?api_key=cfe6a1839d4b99198be61665abad026e&language=pt-BR&page=1"
+        "https://api.themoviedb.org/3/tv/airing_today?api_key=cfe6a1839d4b99198be61665abad026e&language=pt-BR&page=1"
       )
       .then((resposta) => {
         const allApi = resposta.data.results.map((item) => {
@@ -72,10 +72,13 @@ export default function CarouselComponent() {
         <Carousel itemsToScroll={3} itemsToShow={5} itemsPadding={[20, 20]}>
           {filmes.map((item) => (
             <div>
-              <img src={item.image} style={{ width: "70%", cursor:'pointer' }} />
-              <CarouselTitle>{item.title}</CarouselTitle>
+              <img
+                src={item.image}
+                style={{ width: "70%", cursor: "pointer" }}
+              />
+              <CarouselTitle>{item.name}</CarouselTitle>
               <CarouselSubTitle>
-                {item.release_date.substring(0, 4)}
+                {item.first_air_date.substring(0, 4)}
               </CarouselSubTitle>
             </div>
           ))}

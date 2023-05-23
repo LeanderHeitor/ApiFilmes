@@ -25,13 +25,16 @@ export const DIV = styled.div`
   margin-left: 101px;
 
   h1 {
+    color: #bec5b5;
   }
 
   h3 {
+    color: #bec5b5;
   }
 
   p {
-    font-size: 1.3rem;
+    color: #bec5b5;
+    font-size: 1.2rem;
     width:45vw;
   }
 `;
@@ -67,23 +70,23 @@ export const ButtonTrailer = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
-  cursor: pointer;
   border-width: 3px;
+  cursor: pointer;
   img {
     margin-right: 6px;
   }
 `;
-export default function Main() {
-  const [filmes, setFilmes] = useState([]);
+export default function SeriesMain() {
+  const [series, setSeries] = useState([]);
   const [fundo, setFundo] = useState([]);
 
   useEffect(() => {
-    getFilmes();
+    getSeries();
   });
-  const getFilmes = async () => {
+  const getSeries = async () => {
     await axios
       .get(
-        "https://api.themoviedb.org/3/movie/popular?api_key=cfe6a1839d4b99198be61665abad026e&language=pt-BR&page=1"
+        "https://api.themoviedb.org/3/tv/popular?api_key=cfe6a1839d4b99198be61665abad026e&language=pt-BR&page=1"
       )
       .then((resposta) => {
         const allApi = resposta.data.results.map((item) => {
@@ -92,8 +95,8 @@ export default function Main() {
             poster: `https://image.tmdb.org/t/p/w1280/${item.backdrop_path}`,
           };
         });
-        setFilmes(allApi);
-        setFundo((arrayAntiga) => (arrayAntiga = filmes.slice(0, 1)));
+        setSeries(allApi);
+        setFundo((arrayAntiga) => (arrayAntiga = series.slice(0, 1)));
         console.log(fundo);
       })
       .catch((error) =>
@@ -106,16 +109,22 @@ export default function Main() {
       <MainStyle back={fundo.map((item) => item.poster)}>
         {fundo.map((item) => (
           <DIV>
-            <h1>{item.title}</h1>
+            <h1>{item.name}</h1>
             <h3>
-            <img src={estrela} style={{ width: "0.8vw" }}/> {item.vote_average} <img src={imdb} style={{ width: "1.7vw" }} />
+              <img src={estrela} style={{ width: "0.8vw" }} />
+              {item.vote_average} <img src={imdb} style={{ width: "1.7vw" }} />
             </h3>
-            <h3>Lançamento: {item.release_date.substring(0, 4)}</h3>
+            <h3>Lançamento: {item.first_air_date.substring(0, 4)}</h3>
             <p>Sinopse: {item.overview}</p>
 
             <ButtonDiv>
-              <ButtonWatch> <img src={play} style={{ width: "0.8vw" }} />Assista agora</ButtonWatch>
-              <ButtonTrailer> <img src={trailer} style={{ width: "0.8vw" }} />Trailer</ButtonTrailer>
+              <ButtonWatch>
+                <img src={play} style={{ width: "0.8vw" }} /> Assista agora
+              </ButtonWatch>
+              <ButtonTrailer>
+                <img src={trailer} style={{ width: "0.8vw" }} />
+                Trailer
+              </ButtonTrailer>
             </ButtonDiv>
           </DIV>
         ))}

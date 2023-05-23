@@ -1,11 +1,14 @@
-import React, { useEffect, useState } from "react"
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
-import logo from "../../assets/Grupo 569@2x.png";
-import Lupa from "../filmes/image.png"
+import logo from "../assets/Grupo 569@2x.png";
+import Lupa from "../filmes/image.png";
 import { GlobalStyle } from "../../App";
+import SApp from "../series/SApp"
+import App from "../../App"
+import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 
 export const HeaderStyle = styled.header`
-position:fixed;
+  position: fixed;
   background-color: rgba(0, 0, 0, 0.5);
   backdrop-filter: blur(30px);
   display: flex;
@@ -14,8 +17,7 @@ position:fixed;
   width: 99.7%;
   height: 10vh;
 
-  input{
-    
+  input {
   }
 
   nav {
@@ -27,7 +29,7 @@ position:fixed;
     justify-content: space-between;
     align-items: center;
     list-style: none;
-    width:100%
+    width: 100%;
   }
 
   a {
@@ -36,54 +38,50 @@ position:fixed;
     font-size: 1.2rem;
   }
   li {
- 
     color: white;
-    width:15%;
-    input{
-
-    }
+    width: 15%;
+    cursor: pointer;
   }
   div {
     display: flex;
-    width:20%;
+    width: 20%;
     justify-content: space-evenly;
   }
 `;
-export const LogoImg = styled.img`
-`;
+export const LogoImg = styled.img``;
 
 export const FiltroSection = styled.section`
-display:flex;
-justify-content:space-evenly;
-align-items:center;
-width:35%;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 35%;
 
-img{
-  width:2vw;
-  cursor:pointer;
-}
-`
+  img {
+    width: 2vw;
+    cursor: pointer;
+  }
+`;
 export const SearchInput = styled.input`
   display: ${(props) => props.show};
-  height:2vh;
-  width:7vw;
-    align-items:center;
+  height: 2vh;
+  width: 7vw;
+  align-items: center;
+`;
+
+export const RouteButton = styled.button`
+  border: none;
+  background: none;
+  color: white;
+  font-size: 1.2rem;
+  cursor: pointer;
 `;
 
 export default function Header() {
-  const [filtro, setFiltro] = useState('');
-  const [mostrarInput, setMostrarInput]= useState(false);
-  
+  const [filtro, setFiltro] = useState("");
 
-  const handleInputChange = (event) => {
-    setFiltro(event.target.value);
-  };
-
-  const handleLupaClick = () => {
-    setMostrarInput(!mostrarInput);
-  };
 
   return (
+    <BrowserRouter>
     <HeaderStyle>
       <nav>
         <ul>
@@ -92,29 +90,19 @@ export default function Header() {
           </li>
           <div>
             <li>
-              <h3>Filmes</h3>
+              <Link to ="/"><RouteButton>Filmes</RouteButton></Link>
             </li>
 
             <li>
-              <h3>Series</h3>
+              <Link to="/series"><RouteButton>Series</RouteButton></Link>
             </li>
           </div>
 
           <FiltroSection>
             <li>
-              
-              <img 
-              src={Lupa} 
-              alt="filtro"
-              onClick={()=>setMostrarInput(!mostrarInput)}
-            />
-            </li>
-            <li>
-              <SearchInput
-              show={mostrarInput===false?'none':'initial'}
-              placeholder="Procure seu filme aqui"
-              value={filtro}
-              onChange={handleInputChange}
+              <img
+                src={Lupa}
+                alt="filtro"
               />
             </li>
             <li>
@@ -127,5 +115,10 @@ export default function Header() {
         </ul>
       </nav>
     </HeaderStyle>
+    <Routes>
+      <Route path= "/filmes" element= {<App/>}/>
+      <Route path="/series" element = {<SApp/>}/>
+    </Routes>
+    </BrowserRouter>
   );
 }
