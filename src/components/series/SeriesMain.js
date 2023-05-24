@@ -26,16 +26,20 @@ export const DIV = styled.div`
 
   h1 {
     color: #bec5b5;
+    font: normal normal bold Open Sans;
   }
 
   h3 {
     color: #bec5b5;
+    font: normal normal bold Open Sans;
   }
 
   p {
     color: #bec5b5;
     font-size: 1.2rem;
     width:45vw;
+    font: normal normal bold Open Sans;
+    opacity:0.7;
   }
 `;
 export const ButtonDiv = styled.div`
@@ -57,6 +61,8 @@ export const ButtonWatch = styled.button`
   align-items: center;
   cursor: pointer;
   border-width: 3px;
+  font: normal normal 600 Open Sans;
+  font-size:1.1rem;
   img {
     margin-right: 6px;
   }
@@ -72,6 +78,8 @@ export const ButtonTrailer = styled.button`
   align-items: center;
   border-width: 3px;
   cursor: pointer;
+  font: normal normal 600 Open Sans;
+  font-size:1.1rem;
   img {
     margin-right: 6px;
   }
@@ -115,7 +123,7 @@ export default function SeriesMain() {
               {item.vote_average} <img src={imdb} style={{ width: "1.7vw" }} />
             </h3>
             <h3>Lançamento: {item.first_air_date.substring(0, 4)}</h3>
-            <p>Sinopse: {item.overview}</p>
+            <p>Sinopse: ... {item.overview}</p>
 
             <ButtonDiv>
               <ButtonWatch>

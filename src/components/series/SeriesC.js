@@ -45,20 +45,28 @@ export const MapSection = styled.section`
     margin-top: 20px;
   }
   h2 {
-    font-size: 16px;
+    font-size: 18px;
     color: white;
-    text-align: center;
+    text-align: start;
+    font: normal normal bold Open Sans;
   }
   h3 {
     font-size: 12px;
     color: white;
-    text-align: center;
+    text-align: start;
+    font: normal normal 300 Open Sans;
+    opacity: 0.5;
   }
 `;
 
 export const SearchInput = styled.input`
   display: ${(props) => props.show};
   margin-right: 30px;
+  border-radius: 30%;
+  background: none;
+  color: white;
+  height: 3vh;
+  width: 7vw;
 `;
 
 export default function Series() {
@@ -126,7 +134,7 @@ export default function Series() {
           </div>
         </SearchSection>
         {filtrados.map((item) => (
-          <MapSection key={item.id}>
+          <MapSection>
             <img src={item.image} alt={item.name} />
             <h2>{item.name}</h2>
             <h3>{item.first_air_date.substring(0, 4)}</h3>

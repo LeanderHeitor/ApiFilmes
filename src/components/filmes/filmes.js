@@ -40,30 +40,34 @@ export const MapSection = styled.section`
   img {
     width: 100%;
     text-align: center;
-    margin-top:20px;
-    margin-bottom:20px;
+    margin-top: 20px;
+    margin-bottom: 20px;
     cursor: pointer;
   }
   h2 {
-    font-size: 16px;
+    font-size: 18px;
     color: white;
-    text-align: center;
+    text-align: start;
+    font: normal normal bold Open Sans;
   }
   h3 {
-    font-size: 12px;
+    font-size: 16px;
     color: white;
-    text-align: center;
+    text-align: start;
+    font: normal normal 300 Open Sans;
+    color: #f6f6f6;
+    opacity: 0.5;
   }
 `;
 
 export const SearchInput = styled.input`
   display: ${(props) => props.show};
   margin-right: 30px;
-  border-radius:30%;
-  background:none;
-  color:white;
-  height:3vh;
-  width:7vw;
+  border-radius: 30%;
+  background: none;
+  color: white;
+  height: 3vh;
+  width: 7vw;
 `;
 
 export default function Filmes() {

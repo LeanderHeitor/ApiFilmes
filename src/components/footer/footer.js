@@ -39,6 +39,7 @@ export const ButtonStyle = styled.button`
     color: white;
     border-color: white;
     cursor: pointer;
+    font: normal normal normal 14px/18px Open Sans;
 `
 export const SelecButtonStyle = styled.button`
   width: 3vw;
@@ -47,6 +48,7 @@ export const SelecButtonStyle = styled.button`
     background-color: white;
     color: black;
     cursor: pointer;
+    font: normal normal normal 14px/18px Open Sans;
     
 `
 export const UltimoButtonStyle = styled.button`
@@ -57,6 +59,7 @@ export const UltimoButtonStyle = styled.button`
     color: white;
     cursor: pointer;
     border-color:white;
+    font: normal normal normal 14px/18px Open Sans;
     
 `
 

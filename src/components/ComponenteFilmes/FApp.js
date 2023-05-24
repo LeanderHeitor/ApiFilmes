@@ -1,10 +1,10 @@
 import React from "react";
 import Header from "../header/header";
-import SeriesMain from "./SeriesMain";
+import Main from "../main/main";
 import NavComponent from "../navbar/navbar";
-import SeriesCarouselComponent from "./SeriesCarousel";
+import Carousel from "../carousel/carousel";
 import Footer from "../footer/footer";
-import Series from "./SeriesC";
+import Filmes from "../filmes/filmes";
 import { createGlobalStyle } from "styled-components";
 
 export const GlobalStyle = createGlobalStyle`
@@ -15,14 +15,14 @@ export const GlobalStyle = createGlobalStyle`
   }
 `;
 
-export default function SApp() {
+export default function FApp() {
   return (
     <>
       <Header />
-      <SeriesMain />
+      <Main />
       <NavComponent />
-      <SeriesCarouselComponent />
-      <Series/>
+      <Carousel />
+      <Filmes/>
       <Footer />
       <GlobalStyle />
     </>

@@ -34,11 +34,14 @@ const MainTitle = styled.h2`
   margin-bottom: 20px;
 `;
 const CarouselTitle = styled.h2`
-  font-size: 16px;
+  font-size: 18px;
+  font: normal normal bold Open Sans;
   color: white;
 `;
 const CarouselSubTitle = styled.h3`
-  font-size: 12px;
+  font-size: 16px;
+  font: normal normal bold Open Sans;
+  opacity:0.5;
   color: white;
 `;
 export default function SeriesCarouselComponent() {

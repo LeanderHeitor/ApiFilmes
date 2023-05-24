@@ -20,6 +20,8 @@ export const NavItem = styled.li`
   color: white;
   margin-top:20px;
   margin-bottom:20px;
+  font: normal normal normal Open Sans;
+  font-size:1.1rem;
 `;
 
 export const NavSearch = styled.input`

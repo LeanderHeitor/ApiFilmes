@@ -5,7 +5,7 @@ import Lupa from "../filmes/image.png";
 import { GlobalStyle } from "../../App";
 import SApp from "../series/SApp"
 import App from "../../App"
-import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 export const HeaderStyle = styled.header`
   position: fixed;
@@ -16,7 +16,6 @@ export const HeaderStyle = styled.header`
   align-items: center;
   width: 99.7%;
   height: 10vh;
-
   input {
   }
 
@@ -39,8 +38,9 @@ export const HeaderStyle = styled.header`
   }
   li {
     color: white;
-    width: 15%;
+    width: 80%;
     cursor: pointer;
+    font: normal normal normal Open Sans;
   }
   div {
     display: flex;
@@ -48,9 +48,12 @@ export const HeaderStyle = styled.header`
     justify-content: space-evenly;
   }
 `;
-export const LogoImg = styled.img``;
+export const LogoImg = styled.img`
+align-items:left;
+border:solid black;
+`
 
-export const FiltroSection = styled.section`
+export const FiltroSection = styled.div`
   display: flex;
   justify-content: space-evenly;
   align-items: center;
@@ -74,6 +77,8 @@ export const RouteButton = styled.button`
   color: white;
   font-size: 1.2rem;
   cursor: pointer;
+  height:2vh;
+  font: normal normal normal Open Sans;
 `;
 
 export default function Header() {
@@ -81,16 +86,17 @@ export default function Header() {
 
 
   return (
-    <BrowserRouter>
     <HeaderStyle>
       <nav>
         <ul>
+          <div>
           <li>
             <LogoImg src={logo} alt=""></LogoImg>
           </li>
+          </div>
           <div>
             <li>
-              <Link to ="/"><RouteButton>Filmes</RouteButton></Link>
+              <Link to ="/filmes"><RouteButton>Filmes</RouteButton></Link>
             </li>
 
             <li>
@@ -115,10 +121,6 @@ export default function Header() {
         </ul>
       </nav>
     </HeaderStyle>
-    <Routes>
-      <Route path= "/filmes" element= {<App/>}/>
-      <Route path="/series" element = {<SApp/>}/>
-    </Routes>
-    </BrowserRouter>
+
   );
 }

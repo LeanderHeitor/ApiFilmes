@@ -25,12 +25,20 @@ export const DIV = styled.div`
   margin-left: 101px;
 
   h1 {
+    font: normal normal bold Open Sans;
+  }
+  h2{
+    font: normal normal normal Open Sans;
   }
 
   h3 {
+    font: normal normal normal Open Sans;
+    opacity:0.7;
   }
 
   p {
+    font: normal normal 300 Open Sans;
+    opacity:0.7;
     font-size: 1.3rem;
     width:45vw;
   }
@@ -54,6 +62,8 @@ export const ButtonWatch = styled.button`
   align-items: center;
   cursor: pointer;
   border-width: 3px;
+  font: normal normal 600 Open Sans;
+  font-size:1.1rem;
   img {
     margin-right: 6px;
   }
@@ -69,6 +79,8 @@ export const ButtonTrailer = styled.button`
   align-items: center;
   cursor: pointer;
   border-width: 3px;
+  font: normal normal 600 Open Sans;
+  font-size:1.1rem;
   img {
     margin-right: 6px;
   }
@@ -107,9 +119,9 @@ export default function Main() {
         {fundo.map((item) => (
           <DIV>
             <h1>{item.title}</h1>
-            <h3>
+            <h2>
             <img src={estrela} style={{ width: "0.8vw" }}/> {item.vote_average} <img src={imdb} style={{ width: "1.7vw" }} />
-            </h3>
+            </h2>
             <h3>Lançamento: {item.release_date.substring(0, 4)}</h3>
             <p>Sinopse: {item.overview}</p>
 
