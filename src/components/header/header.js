@@ -50,7 +50,6 @@ export const HeaderStyle = styled.header`
 `;
 export const LogoImg = styled.img`
 align-items:left;
-border:solid black;
 `
 
 export const FiltroSection = styled.div`
